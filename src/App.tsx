@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // CSS
 import styles from "./App.module.css";
+
+// Interface
+import { ITask } from "./interfaces/Task";
 
 // components
 import Footer from './components/Footer';
@@ -10,6 +13,9 @@ import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 
 function App() {
+
+  const [taskList, setTaskList] = useState<ITask[]>([]);
+
   return (
     <div className="App">
       <Header />
@@ -17,7 +23,7 @@ function App() {
       <main className={styles.main}>
         <div>
           <h2>O que você vai fazer?</h2>
-          <TaskForm btnText='Criar Tafera'/>
+          <TaskForm btnText='Criar Tafera' taskList={taskList} setTaskList={setTaskList}/>
         </div>
 
         <div>
